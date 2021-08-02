@@ -1,5 +1,4 @@
-ARG PHP_VERSION
-FROM dnmp_php
+FROM dnmp_php74
 
 WORKDIR /www/mirco/bolao
 
