@@ -3,11 +3,6 @@ services:
   soke-bolao:
     build:
       context: ./services/soke-bolao
-      args:
-        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
-        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-        PHP_EXTENSIONS: ${PHP_EXTENSIONS}
-        TZ: "$TZ"
     container_name: soke-bolao
     ports:
       - 9502:9502
@@ -18,10 +13,7 @@ services:
       - "www.site1.com:172.17.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
-      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ${PHP_LOG_DIR}:/var/log/php
-      - ${DATA_DIR}/composer:/tmp/composer
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -30,11 +22,6 @@ services:
   soke-opendev:
     build:
       context: ./services/soke-opendev
-      args:
-        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
-        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-        PHP_EXTENSIONS: ${PHP_EXTENSIONS}
-        TZ: "$TZ"
     container_name: soke-opendev
     ports:
       - 9501:9501
@@ -44,10 +31,7 @@ services:
       - "www.site1.com:172.17.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
-      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ${PHP_LOG_DIR}:/var/log/php
-      - ${DATA_DIR}/composer:/tmp/composer
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -56,11 +40,6 @@ services:
   soke-xique:
     build:
       context: ./services/soke-xique
-      args:
-        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
-        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-        PHP_EXTENSIONS: ${PHP_EXTENSIONS}
-        TZ: "$TZ"
     container_name: soke-xique
     ports:
       - 9503:9503
@@ -70,10 +49,7 @@ services:
       - "www.site1.com:172.17.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
-      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ${PHP_LOG_DIR}:/var/log/php
-      - ${DATA_DIR}/composer:/tmp/composer
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -82,11 +58,6 @@ services:
   soke-xingshui:
     build:
       context: ./services/soke-xingshui
-      args:
-        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
-        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-        PHP_EXTENSIONS: ${PHP_EXTENSIONS}
-        TZ: "$TZ"
     container_name: soke-xingshui
     ports:
       - 9504:9504
@@ -96,10 +67,25 @@ services:
       - "www.site1.com:172.17.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
-      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ${PHP_LOG_DIR}:/var/log/php
-      - ${DATA_DIR}/composer:/tmp/composer
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+  soke-exam:
+    build:
+      context: ./services/soke-exam
+    container_name: soke-exam
+    ports:
+      - 9505:9505
+    expose:
+      - 9505
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
     restart: always
     cap_add:
       - SYS_PTRACE
