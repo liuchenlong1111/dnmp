@@ -6,7 +6,7 @@ services:
   #  数据库采用dnmp的数据库，无需再安装mysql 。新建nacos数据库，执行SQL脚本初始化数据库。
   #  MySQL 文件：
   #  https://github.com/Gleans/SpringCloudPro/blob/master/docker/mysql-init/init.sql
-  # 测试5
+  # 测试7
   nacos:
     image: nacos/nacos-server:1.4.1
     container_name: nacos
